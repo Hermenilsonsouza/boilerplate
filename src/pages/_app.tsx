@@ -1,5 +1,7 @@
+import store from 'flux/store'
 import { AppProps } from 'next/app'
 import Head from 'next/head'
+import { Provider } from 'react-redux'
 
 import GlobalStyles from 'styles/global'
 
@@ -18,7 +20,9 @@ function App({ Component, pageProps }: AppProps) {
         />
       </Head>
       <GlobalStyles />
-      <Component {...pageProps} />
+      <Provider store={store}>
+        <Component {...pageProps} />
+      </Provider>
     </>
   )
 }
